@@ -250,17 +250,4 @@ If you wish to re-create the complete AdventureWorks datawarehouse-database (Adv
 * Once the database is restored, you should see the 4 SQL views under the "views" folder in SQL Server Management Studio. The `sales-analysis.sql` file provided under this repo contains the source code for the views. You can open the .sql file in SQL Server Studio and run it. It drops and re-creates the idea; hence .sql script can be modified and run multiple times without any issues.
 * Now you can open the `sales-analysis.pbix` and click refresh; it'll ask for your SQL server credentials. Once connected, reports will fetch live data directly from SQL Server in real-time. Enjoy!
   
-
-## License
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-
-# Get in touch
-[![email](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:sunil@sunilssingh.me)
-[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/@thesssingh)
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sssingh/)
-[![website](https://img.shields.io/badge/web_site-8B5BE8?style=for-the-badge&logo=ko-fi&logoColor=white)](https://sunilssingh.me)
-
-## Credits
-- AdventureWorks dataset sourced from [Microsoft AdventureWorks sample databases](https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver16&tabs=ssms)
-
 [Back To The Top](#salescustomerproduct-analysis)
