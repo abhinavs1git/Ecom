@@ -1,253 +1,151 @@
-[![Open In Power Bi](https://img.shields.io/badge/open_in_power_bi-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)](https://app.powerbi.com/view?r=eyJrIjoiNDE5NDEyMWUtY2NiMi00MzRiLTljZmYtYmZlNWQzOTBkMDgzIiwidCI6ImFlZDI3MWNkLTYzOTgtNDllZi1hOWNmLTQ4NDIyMTAxZTE0ZSIsImMiOjEwfQ%3D%3D)
+E-Commerce Sales Analysis Dashboard
 
-# Sales/Customer/Product Analysis
-In this ‘Data Analysis’ project, we’ll analyze `AdventureWorks`, an online retailer's raw sales data, and draw meaningful insights.
+A comprehensive Power BI Sales Analytics Dashboard built using the Sales Dataset. This project provides insights into sales performance, customer behavior, profitability, and forecasting through interactive visualizations and dynamic filters.
 
-<img src="https://github.com/sssingh/sales-customer-product-analysis-powerbi/blob/main/images/title.png?raw=true" width="1000" height="800" />
+📌 Project Overview
 
-## Features
-⚡Microsoft SQL Server / SQL / T-SQL [For building the datasource]  
-⚡PowerBI Desktop [For building the PowerBI dashboard/report]  
-⚡PowerQuery Editor [For data-transformation/data-modeling]  
-⚡PowerBI Service [For making the report accessible on the web without PowerBI login]  
-⚡Multipage fully Interactive Report [For drawing insights and analysis]  
+This Power BI project analyzes over 133,000+ sales records spanning from 2015 to 2020. The dashboard is designed to help stakeholders understand:
 
-## Table of Contents
-- [Introduction](#introduction) 
-- [Objective](#objective)
-- [Dataset](#dataset)
-- [Solution Approach](#solution-approach)
-- [How To Use](#how-to-use)
-- [License](#license)
-- [Credits](#credits)
-- [Get in touch](#get-in-touch)
+Revenue trends over time
+Profitability analysis
+Customer demographics and purchasing behavior
+Geographic sales distribution
+Product category performance
+Sales forecasting and profit simulations
 
+The project is divided into three interactive dashboard pages:
 
-## Introduction
+Sales Dashboard
+Customer Analysis
+Profit & Forecast Analysis
+📊 Dataset Information
 
-* `AdventureWorks` is an online retailer that sells `Bikes` and `Biking related` items such as bike parts, biking protective gear, articles of clothing, etc. 
-* Online sales transactions, inventory, financials, customer and product information are captured in real-time in a `transaction database`.
-* At the End of the day after the closing of business, data from the transaction database is extracted, formatted, and then exported to a `data warehouse database.` 
+Dataset Name: E-Commerce Sales Dataset
 
-## Objectives
-We have been asked by AdventureWorks to perform the in-depth data analysis for the years `2016 and 2017` and draw insight into company sales performance, customers, and products so that they can build a strategy around it to generate more revenue and higher profits. Specific business requirements/questions are…
+Dataset Size
+Records: 133,503
+Columns: 19
+Period Covered: January 2015 – December 2020
+Key Fields
+Field	Description
+Order Date	Date of purchase
+Delivery Date	Delivery completion date
+Customer ID	Unique customer identifier
+Customer Age	Customer age
+Customer Gender	Male/Female
+Location	Customer location
+Zone	Geographic sales zone
+Product Category	Product category
+SubCategory	Product sub-category
+Product	Product name
+Unit Price	Product price
+Order Quantity	Quantity purchased
+Sale Price	Final sale value
+Shipping Fee	Shipping charges
+Status	Delivered/Returned
+Rating	Customer rating
+Reason	Return reason
+📈 Dashboard 1: Sales Dashboard
+<img width="1433" height="806" alt="image" src="https://github.com/user-attachments/assets/24912849-af4d-400b-9233-2e20ff93e5ec" />
 
-|Requirement ID|For Whom|Requirement Description|
-|:--|:---|:--|
-AW-DA01-REQ-1|Head of Sales|A high-level overview of internet sales by various dimensions such as `customers,` `products,` `customer-cities,` `quarter`
-AW-DA01-REQ-2|Head of Sales|Track `sales performance` over time against the `budget/target`
-AW-DA01-REQ-3|Head of Sales|Ability to dynamically slice/dice/filter data for `year,` `month,` `product-attributes`
-AW-DA01-REQ-4|Sales Rep|A detailed overview of sales by `customers`
-AW-DA01-REQ-5|Sales Rep|A detailed overview of sales by `products`
-AW-DA01-REQ-6|Sales Rep|Ability to dynamically slice/dice/filter and analyze data by `year,` `month,` `product-attributes,` `customer-attributes`
+The main dashboard provides a high-level overview of business performance.
 
-***Table-1 : Requirements***
+KPIs
+Total Revenue
+Total Profit
+Products Sold
+Total Orders
+Average Customer Rating
+Visualizations
+Revenue by Year
 
-## Dataset
-AdventureWorks makes data available strictly through its `datawarehouse-database` for any data analysis. The real-time transaction database is not directly accessible.
-### AdventureWorks Datawarehouse
-data warehouse-database schema is shown below... <br>
-<img src="https://github.com/sssingh/sales-customer-product-analysis-powerbi/blob/main/images/DW%20Schema.png?raw=true" width="400" height="600" />
+Tracks revenue growth trends across multiple years.
 
-The complete datawarehouse-database in the form of Microsoft SQL Server  `database-backup`  can be downloaded from [here](https://drive.google.com/file/d/1azhAQjbAV7pgh_A0CSKAErneHr5L4zUu/view?usp=sharing), *refer the [How To Use](#how-to-use) section for more details in terms of how to restore the downloaded backup to re-create the database*.
+Revenue by Zone
 
-### Budget Data
-AdventureWorks allocates a monthly budget for sales. The company sets a monthly target against which sales performance is measured as a key KPI. The budget is fixed yearly in advance by top management and is not part of the datawarehouse-database. AdventureWorks provides the budget as an XLS file; a snapshot of the 2016/2017 budget is shown below... <br>
-<img src="https://github.com/sssingh/sales-customer-product-analysis-powerbi/blob/main/images/budget.png?raw=true" width="400" height="600" />
+Compares sales performance across different geographic zones.
 
-## Solution Approach
-  
-|Requirement ID|Solution ID|Proposed Solution|
-|:--|:---|:--|
-AW-DA01-REQ-1 <br> AW-DA01-REQ-2 <br> AW-DA01-REQ-3|AW-DA01-SOL-1|An `Executive Summary` report page showing a high-level overview of sales data, including visuals for sales vs. budget/target. Year, month `slicers` and `filters` will allow users to slice the data dynamically.
-AW-DA01-REQ-4 <br> AW-DA01-REQ-6|AW-DA01-SOL-2|A `Customer Analysis` report page showing sales segmented by customer attributes (top customers, gender, marital status, etc.). Year, month `slicers` and `filters` will allow dynamic data exploration.
-AW-DA01-REQ-5 <br> AW-DA01-REQ-6|AW-DA01-SOL-3|A `Product Analysis` report page showing sales segmented by product attributes (top products, category, subcategory, etc.). Year, month `slicers` and `filters` will allow dynamic data exploration.
+Profit by Year
 
-***Table-2 : Proposed Solution***
+Displays yearly profitability trends.
 
-### Exploratory Data Analysis (EDA)  and Data Preparation [SQL]
-To understand and verify the quality of the given data, the first step is EDA. In this project, initial data exploration was carried out using `SQL.`
-#### EDA
-Here we explore the datawarehouse-database to identify the `dimension` and `fact` tables we'd need as our data source. We further explore the identified tables to understand their structure and their data. Based on the requirements, we identified the tables below as our primary data source...
-|Table|Description|
-|:--|:--| 
-|`DimDate`|A dimension table containing date-related info
-|`DimCustomer`|A dimension table containing customer-related info
-|`DimGeography`|A dimension table containing customer-geography-related info
-|`DimProduct`|A dimension table containing product-related info
-|`DimProductCategory`|A dimension table containing product-category-related info
-|`DimProductSubcategory`|A dimension table containing product-subcategory-related info
-|`FactInternetSales`|A fact table containing sales-related information
+Orders by Year
 
-***Table-3 : Database Tables***
-#### Data Preparation
-We import data directly from the database into PowerBI. Instead of writing raw `SELECT` joins inside PowerBI, we create database `VIEWS` that encapsulate the SQL — PowerBI then just runs `SELECT * FROM <view>`. This approach has a few advantages:
-* Keeps PowerBI data import simple and clean.
-* PowerBI always fetches live data directly from the database on refresh — no need to manage CSV/XLS extracts separately.
-* Data selection logic lives in the database view. If it changes, only the view needs updating; PowerBI requires no changes as long as the column names stay the same.
+Shows yearly order volume and customer demand patterns.
 
-##### 1. View: vw_date 
-```SQL
--- Dimension: Date - All date-related attributes are encapsulated by this view
-DROP
-	VIEW IF EXISTS vw_date
-GO
+Interactive Filters
+Year
+Month
+Week Type
+Product Category
+Rating
+Business Insights
+Identify top-performing years.
+Monitor profit growth.
+Compare regional sales performance.
+Analyze customer satisfaction through ratings.
+👥 Dashboard 2: Customer Analysis
+<img width="1434" height="789" alt="image" src="https://github.com/user-attachments/assets/766e5cc8-b1de-4804-9fa6-0524c768fb4e" />
 
-CREATE 
-	VIEW vw_date AS
-SELECT
-	[DateKey],
-	[FullDateAlternateKey] AS [Date],
-	[DayNumberOfWeek],
-	[EnglishDayNameOfWeek] AS [Day],
-	[DayNumberOfMonth] AS [Day Nr],
-	[EnglishMonthName] AS [Month],
-	[MonthNumberOfYear] AS [Month Nr],
-	[CalendarQuarter] AS [Quarter],
-	[CalendarYear] AS [Year]
-FROM
-	[AdventureWorksDW2019].[dbo].[DimDate]
-GO
-```
-##### 2. View: vw_customer 
-```SQL
--- Dimension: Customer - All customer-related attributes are encapsulated by this view
-DROP 
-	VIEW IF EXISTS vw_customer 
-GO 
+Focused on understanding customer demographics and purchasing behavior.
 
-CREATE 
-	VIEW vw_customer AS 
-SELECT 
-	[CustomerKey], 
-	CONCAT([FirstName], ', '[LastName]) AS [Full Name], 
-	CASE [MaritalStatus] WHEN 'M' THEN 'Married' WHEN 'S' THEN 'Single' END AS [Marital status], 
-	CASE [Gender] WHEN 'M' THEN 'Male' ELSE 'Female' END AS [Gender], 
-	[YearlyIncome], 
-	[TotalChildren], 
-	[EnglishEducation], 
-	[EnglishOccupation], 
-	[HouseOwnerFlag], 
-	[NumberCarsOwned], 
-	[DateFirstPurchase], 
-	GEOG.City AS [City], 
-	GEOG.EnglishCountryRegionName AS [Country] 
-FROM 
-	[AdventureWorksDW2019].[dbo].[DimCustomer] AS CUST 
-	LEFT JOIN [AdventureWorksDW2019].[dbo].[DimGeography] AS GEOG ON GEOG.GeographyKey = CUST.GeographyKey 
-GO 
-```
+KPIs
+Total Customers
+Rating Count
+Visualizations
+Total Customers by Location
 
-##### 3. View: vw_product
-```SQL
--- Dimension: Product - All product-related attributes are encapsulated by this view 
-DROP 
-	VIEW IF EXISTS vw_product 
-GO
- 
-CREATE 
-	VIEW vw_product AS 
-SELECT 
-	[ProductKey], 
-	CATG.EnglishProductCategoryName AS [Category], 
-	SUBC.EnglishProductSubcategoryName AS [Sub Category], 
-	[EnglishProductName], 
-	[Color], 
-	[ListPrice], 
-	[ProductLine], 
-	[Class], 
-	[Style], 
-	[ModelName], 
-	[EnglishDescription], 
-	[StartDate], 
-	[EndDate], 
-	[Status] 
-FROM 
-	[AdventureWorksDW2019].[dbo].[DimProduct] AS PROD 
-	LEFT JOIN [AdventureWorksDW2019].[dbo].DimProductSubcategory AS SUBC ON SUBC.ProductSubcategoryKey = PROD.ProductSubcategoryKey 
-	LEFT JOIN [AdventureWorksDW2019].[dbo].DimProductCategory AS CATG ON CATG.ProductCategoryKey = SUBC.ProductCategoryKey 
-WHERE 
-	PROD.FinishedGoodsFlag = 1 
-GO  
-```
-##### 4. View: vw_internet_sales
-```SQL
--- Fact: FactInternetSales - All internet sales details for the years 2016 & 2017 are encapsulated by this view
-DROP 
-	VIEW IF EXISTS vw_internet_sales 
-GO 
+Displays customer distribution across different locations.
 
-CREATE 
-	VIEW vw_internet_sales AS 
-SELECT 
-	[ProductKey], 
-	[OrderDateKey], 
-	[DueDateKey], 
-	[ShipDateKey], 
-	[CustomerKey], 
-	[SalesOrderNumber], 
-	[SalesAmount] 
-FROM 
-	[AdventureWorksDW2019].[dbo].[FactInternetSales]
-WHERE 
-	LEFT([OrderDateKey], 4) IN (2017, 2016)
-GO
-```
-The SQL used for creating the required views is in this repo's `sales-analysis.sql` file.
-	
-***NOTE:*** 
-* *Creating views works well if you have the necessary database permissions. If not, the SELECT queries can be moved directly into PowerBI instead.*
-* *If your organization doesn't allow BI tools to connect directly to the data warehouse, you'll need a data pipeline to periodically extract the required data (CSV/XLS) and place it somewhere PowerBI can pick up.*
+Revenue per Customer by Year and Gender
 
-### Data Cleaning and Transform [PowerQuery Editor]
-1. We import the  `vw_customer,` `vw_product,` `vw_date` and `vw_internet_sales` as `Dim_Customer,` `Dim_Product,` `Dim_Date` and `Fact_Internet_Sales` query from SQL Server database (one example is shown below)...
+Compares customer spending behavior between male and female customers over time.
 
- <img src="https://github.com/sssingh/sales-customer-product-analysis-powerbi/blob/main/images/import-sql.png?raw=true"/>
- 
-2. We import the `budget` data from provided XLS file as a `Fact_Budget` query.
+Interactive Filters
+Year
+Rating
+Age Group
+Youth
+Adults
+Senior
+Business Insights
+Understand customer concentration by region.
+Analyze demographic purchasing patterns.
+Compare revenue contribution by gender.
+Evaluate customer engagement and satisfaction.
+📉 Dashboard 3: Profit & Forecast Analysis
 
-The imported data is relatively clean and well organized; hence only a little work was required in this step; the following steps were carried out...
-* Correct column heading provided
-* Correct data type is assigned to columns
+<img width="1432" height="803" alt="image" src="https://github.com/user-attachments/assets/e9c358e5-c1b5-45b9-bba4-a360211c8284" />
 
-### Data Model Creation [PowerBI Desktop]
-The data model is based on the four SQL views (three dimensions and one fact) imported from the database, plus the budget table from the XLS file. Since these aren't implicitly related, relationships need to be set up manually in PowerBI Desktop. Once linked, they form a `star schema`. The resultant data model is shown below...
+Provides advanced profit analysis and future revenue forecasting.
 
-<img src="https://github.com/sssingh/sales-customer-product-analysis-powerbi/blob/main/images/data-model.png?raw=true"/>
+Features
+Actual vs Increment Profit Analysis
 
-**NOTE:**  *The prefix `DIM` denotes the dimension table, and `FACT` is the fact table.*
+Compares actual profit against projected profit scenarios.
 
-### Report Creation [PowerBI Desktop]
-Three interactive reports/dashboard (report pages) will be created to implement the proposed solution. Refer to [Table-2: Proposed Solution](#solution-approach) for detailed requirements and corresponding proposed solution. 
+Dynamic What-If Parameters
 
-#### 1. Executive Summary Report [AW-DA01-SOL-1]
-This high-level report shows the overall sales figures, top customers, top products, and Sales Vs. Budget KPI at a glance.
+Users can simulate business outcomes using:
 
-<img src="https://github.com/sssingh/sales-customer-product-analysis-powerbi/blob/main/images/exec-summary-page.png?raw=true"/>
+Price Increment %
+Discount %
+New Profit vs Actual Profit
 
-#### 2. Customer Analysis Report [AW-DA01-SOL-2]  
-This more granular detailed report analyses the sales data from the company's customers' perspective.
- 
- <img src="https://github.com/sssingh/sales-customer-product-analysis-powerbi/blob/main/images/cust-analysis-page.png?raw=true"/>
- 
-#### 3. Product Analysis Report [AW-DA01-SOL-3]  
-This detailed report analyses the sales data from the company's products perspective.
- 
- <img src="https://github.com/sssingh/sales-customer-product-analysis-powerbi/blob/main/images/prod-analysis-page.png?raw=true"/>
+Visualizes the impact of pricing and discount changes on profitability.
 
-## How To Use
-### Read-only access via the web (Recommended)
-[![Open In Power Bi](https://img.shields.io/badge/open_in_power_bi-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)](https://app.powerbi.com/view?r=eyJrIjoiNDE5NDEyMWUtY2NiMi00MzRiLTljZmYtYmZlNWQzOTBkMDgzIiwidCI6ImFlZDI3MWNkLTYzOTgtNDllZi1hOWNmLTQ4NDIyMTAxZTE0ZSIsImMiOjEwfQ%3D%3D)  
-Explore the fully functional report with native PowerBI interactive experience. 
+Revenue Forecasting
 
-### Full access via PowerBI desktop
-If you have PowerBI desktop installed, download the `sales-analysis.pbix` from the repo and open it using PowerBI desktop. There is no need to download the raw dataset; the `pbix` files contain the complete normalized data model. Feel free to explore and modify. 
+Uses Power BI forecasting capabilities to predict future revenue trends.
 
-If you wish to re-create the complete AdventureWorks datawarehouse-database (AdventureWorksDW2019) and make changes to source data in the PowerBI dashboard, follow the below steps...
-* Download and Install free [Microsoft SQL Server Express](https://www.microsoft.com/en-us/download/details.aspx?id=101064) and [Microsoft SQL Server Studio](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16#download-ssms)
-* Download the AdventureWorksDW2019 database backup using the link provided in [Dataset](#dataset) section
-* Unzip the downloaded file (AdventureWorksDW2019.zip) and restore the backup (AdventureWorksDW2019.bak file), just follow the instructions listed [here](https://learn.microsoft.com/en-us/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms?view=sql-server-ver16#a-restore-a-full-database-backup) 
-* Once the database is restored, you should see the 4 SQL views under the "views" folder in SQL Server Management Studio. The `sales-analysis.sql` file provided under this repo contains the source code for the views. You can open the .sql file in SQL Server Studio and run it. It drops and re-creates the idea; hence .sql script can be modified and run multiple times without any issues.
-* Now you can open the `sales-analysis.pbix` and click refresh; it'll ask for your SQL server credentials. Once connected, reports will fetch live data directly from SQL Server in real-time. Enjoy!
-  
-[Back To The Top](#salescustomerproduct-analysis)
+Business Insights
+Evaluate pricing strategies.
+Measure impact of discounts.
+Forecast future sales performance.
+Support data-driven decision making.
+🛠️ Tools & Technologies
+Power BI Desktop
+Microsoft Excel
+DAX (Data Analysis Expressions)
+Power Query
+Data Modeling
