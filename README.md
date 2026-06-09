@@ -45,7 +45,14 @@ Shipping Fee	Shipping charges
 Status	Delivered/Returned
 Rating	Customer rating
 Reason	Return reason
+
+PowerBI Data Model: 
+
+<img width="1349" height="728" alt="Schema" src="https://github.com/user-attachments/assets/246a2549-39c8-4dc8-97c2-301f35d1444f" />
+
+
 📈 Dashboard 1: Sales Dashboard
+
 <img width="1433" height="806" alt="image" src="https://github.com/user-attachments/assets/24912849-af4d-400b-9233-2e20ff93e5ec" />
 
 The main dashboard provides a high-level overview of business performance.
@@ -84,7 +91,9 @@ Identify top-performing years.
 Monitor profit growth.
 Compare regional sales performance.
 Analyze customer satisfaction through ratings.
+
 👥 Dashboard 2: Customer Analysis
+
 <img width="1434" height="789" alt="image" src="https://github.com/user-attachments/assets/766e5cc8-b1de-4804-9fa6-0524c768fb4e" />
 
 Focused on understanding customer demographics and purchasing behavior.
@@ -113,6 +122,7 @@ Understand customer concentration by region.
 Analyze demographic purchasing patterns.
 Compare revenue contribution by gender.
 Evaluate customer engagement and satisfaction.
+
 📉 Dashboard 3: Profit & Forecast Analysis
 
 <img width="1432" height="803" alt="image" src="https://github.com/user-attachments/assets/e9c358e5-c1b5-45b9-bba4-a360211c8284" />
