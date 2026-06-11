@@ -13,16 +13,17 @@ Geographic sales distribution
 Product category performance
 Sales forecasting and profit simulations
 
-**The project is divided into three interactive dashboard pages:**
+**The project is divided into three interactive dashboard pages**
 
 Flipkart E-Commerce Dashboard
 Customer Analysis
 Profit & Forecast Analysis
-📊 Dataset Information
 
-**Dataset Name: **Flipkart E-Commerce Dataset
+**📊 Dataset Information**
 
-**Dataset Source: **https://www.kaggle.com/datasets/atharvjairath/flipkart-ecommerce-dataset
+**Dataset Name: Flipkart E-Commerce Dataset**
+
+**Dataset Source: https://www.kaggle.com/datasets/atharvjairath/flipkart-ecommerce-dataset**
 
 **Dataset Size**
 Records: 133,503
@@ -48,7 +49,7 @@ Status	Delivered/Returned
 Rating	Customer rating
 Reason	Return reason
 
-**PowerBI Data Model: **
+**PowerBI Data Model**
 
 <img width="1349" height="728" alt="Schema" src="https://github.com/user-attachments/assets/246a2549-39c8-4dc8-97c2-301f35d1444f" />
 
